@@ -1,3 +1,12 @@
+# 0.4.0 (2020-04-20)
+
+
+### Features
+
+* Wikipedia and Yandex.Maps schemas ([df7b5a3](https://github.com/nalgeon/iuliia-py/commit/df7b5a38030099d422c360d8e70f55e5cc98ebc1))
+
+
+
 # 0.3.0 (2020-04-20)
 
 
