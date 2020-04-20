@@ -12,7 +12,7 @@ def main():
         print("usage: iuliia SOURCE")
         sys.exit(1)
     source = sys.argv[1]
-    result = iuliia.translate(source, scheme=None)
+    result = iuliia.translate(source, schema=None)
     print(result)
 
 
