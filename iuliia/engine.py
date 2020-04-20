@@ -2,7 +2,7 @@
 Transate engine.
 """
 
-from iuliia.schemas.base import Schema
+from iuliia.schema import Schema
 
 
 def translate(source: str, schema: Schema):

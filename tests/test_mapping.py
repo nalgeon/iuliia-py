@@ -1,5 +1,5 @@
 import pytest
-from iuliia.schemas.base import Mapping
+from iuliia.schema import Mapping
 
 
 @pytest.fixture
