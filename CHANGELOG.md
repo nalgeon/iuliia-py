@@ -1,3 +1,12 @@
+# 0.5.0 (2020-04-20)
+
+
+### Features
+
+* command-line interface ([52fd29c](https://github.com/nalgeon/iuliia-py/commit/52fd29cc79219d2600aa709ab6d139318b2138c0))
+
+
+
 # 0.4.0 (2020-04-20)
 
 
