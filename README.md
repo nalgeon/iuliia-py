@@ -4,6 +4,7 @@
 [![PyPI Version][pypi-image]][pypi-url]
 [![Build Status][build-image]][build-url]
 [![Code Coverage][coverage-image]][coverage-url]
+[![Code Quality][quality-image]][quality-url]
 
 Transliteration means representing Cyrillic data (mainly names and geographic locations) with Latin letters. It is used for international passports, visas, green cards, driving licenses, mail and goods delivery etc.
 
@@ -111,3 +112,5 @@ Use [Black](https://black.readthedocs.io/en/stable/) for code formatting and [Co
 [build-url]: https://travis-ci.org/nalgeon/iuliia-py
 [coverage-image]: https://img.shields.io/coveralls/github/nalgeon/iuliia-py?style=flat-square
 [coverage-url]: https://coveralls.io/github/nalgeon/iuliia-py
+[quality-image]: https://img.shields.io/codeclimate/maintainability/nalgeon/iuliia-py?style=flat-square
+[quality-url]: https://codeclimate.com/github/nalgeon/iuliia-py
