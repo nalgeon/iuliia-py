@@ -2,6 +2,16 @@ import pytest
 import iuliia
 
 
+def test_schema_names():
+    names = iuliia.Schemas.names()
+    assert names == ["wikipedia", "yandex_maps", "yandex_money"]
+
+
+def test_get_schema_by_name():
+    schema = iuliia.Schemas.get("wikipedia")
+    assert schema == iuliia.WIKIPEDIA
+
+
 @pytest.mark.parametrize(
     "source,expected",
     [

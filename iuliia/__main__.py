@@ -10,17 +10,19 @@ def main():
     """Transliterate string from command line"""
     if len(sys.argv) < 3:
         print("usage: iuliia SCHEMA SOURCE")
+        print("Supported schemas:")
+        print("\n".join(iuliia.Schemas.names()))
         sys.exit(1)
 
     schema_name = sys.argv[1]
-    schema = iuliia.Schemas.__members__.get(schema_name)
+    schema = iuliia.Schemas.get(schema_name)
     if schema is None:
-        schemas = list(iuliia.Schemas.__members__.keys())
-        print(f"Schema {schema_name} does not exist. Supported schemas:\n{schemas}")
+        print(f"Schema '{schema_name}' does not exist. Supported schemas:")
+        print("\n".join(iuliia.Schemas.names()))
         sys.exit(1)
 
     source = sys.argv[2]
-    result = iuliia.translate(source, schema=schema.value)
+    result = iuliia.translate(source, schema)
     print(result)
 
 
