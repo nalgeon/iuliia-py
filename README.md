@@ -27,10 +27,10 @@ Supports actual schemas:
 - ALA-LC (coming soon)
 - BGN/PCGN (coming soon)
 - BS 2979:1958 (coming soon)
-- GOST R 52290-2004 (coming soon)
-- GOST R 7.0.34-2014 (coming soon)
+- GOST R 52290-2004 (`iuliia.GOST_52290`)
+- GOST R 7.0.34-2014 (`iuliia.GOST_7034`)
 - ICAO DOC 9303 (coming soon)
-- ISO 9:1995 (aka GOST 7.79-2000, coming soon)
+- ISO 9:1995 aka GOST 7.79-2000 (`iuliia.GOST_779` and `iuliia.GOST_779_ALT`)
 - UNGEGN 1987 V/18 (coming soon)
 - Scientific (coming soon)
 - Telegram (coming soon)
@@ -38,14 +38,14 @@ Supports actual schemas:
 - Yandex.Maps (`iuliia.YANDEX_MAPS`)
 - Yandex.Money (`iuliia.YANDEX_MONEY`)
 
-And deprecated ones (coming soon):
+And deprecated ones:
 
-- GOST 16876-71
-- GOST R 52535.1-2006
-- ISO/R 9:1954
-- ISO/R 9:1968
-- MVD 310-1997
-- MVD 782-2000
+- GOST 16876-71 (`iuliia.GOST_16876` and `iuliia.GOST_16876_ALT`)
+- GOST R 52535.1-2006 (`iuliia.GOST_52535`)
+- ISO/R 9:1954 (coming soon)
+- ISO/R 9:1968 (coming soon)
+- MVD 310-1997 (`iuliia.MVD_310` and `iuliia.MVD_310_FR`)
+- MVD 782-2000 (`iuliia.MVD_782`)
 
 For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
 
@@ -72,7 +72,7 @@ iuliia.translate(source, schema=iuliia.ICAO_DOC_9303)
 # "Iuliia Shcheglova"
 
 # or pick schema by name
-schema = iuliia.Schemas.get('wikipedia')
+schema = iuliia.Schemas.get("wikipedia")
 iuliia.translate(source, schema)
 # "Yuliya Shcheglova"
 ```

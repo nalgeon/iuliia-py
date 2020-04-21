@@ -6,17 +6,35 @@ Transliterate Cyrillic → Latin in every possible way
 from enum import Enum
 from iuliia.engine import translate
 from iuliia.schema import Schema
+from iuliia.gost16876 import GOST_16876, GOST_16876_ALT
+from iuliia.gost52290 import GOST_52290
+from iuliia.gost52535 import GOST_52535
+from iuliia.gost7034 import GOST_7034
+from iuliia.gost779 import GOST_779, GOST_779_ALT
+from iuliia.mvd310 import MVD_310, MVD_310_FR
+from iuliia.mvd782 import MVD_782
 from iuliia.wikipedia import WIKIPEDIA
 from iuliia.yandexmaps import YANDEX_MAPS
 from iuliia.yandexmoney import YANDEX_MONEY
 
-__version__ = "0.5.1"
+__version__ = "0.6.0"
 __all__ = []
 
 
 class Schemas(Enum):
     """All supported transliteration schemas."""
 
+    gost_16876 = GOST_16876
+    gost_16876_alt = GOST_16876_ALT
+    gost_52290 = GOST_52290
+    gost_52535 = GOST_52535
+    gost_7034 = GOST_7034
+    gost_779 = GOST_779
+    gost_779_alt = GOST_779_ALT
+    iso_9 = GOST_779
+    mvd_310 = MVD_310
+    mvd_310_fr = MVD_310_FR
+    mvd_782 = MVD_782
     wikipedia = WIKIPEDIA
     yandex_maps = YANDEX_MAPS
     yandex_money = YANDEX_MONEY
