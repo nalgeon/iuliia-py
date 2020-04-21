@@ -9,7 +9,7 @@ import iuliia
         ("Гайа Васильева", "Gaya Vasilyeva"),
         ("Андрей Видный", "Andrey Vidnyy"),
         ("Артём Краевой", "Artyem Krayevoy"),
-        ("Мадыр Нечёткий", "Madyr Nechetkiy"),
+        ("Мадыр Чёткий", "Madyr Chetkiy"),
         ("Оксана Клеёнкина", "Oksana Kleyonkina"),
         ("Игорь Ильин", "Igor' Ilyin"),
     ],
