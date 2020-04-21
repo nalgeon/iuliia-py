@@ -1,5 +1,5 @@
 """
-Transliterate Cyrillic → Latin in all ways possible
+Transliterate Cyrillic → Latin in every possible way
 """
 
 # flake8: noqa
