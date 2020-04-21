@@ -1,3 +1,12 @@
+# 0.6.0 (2020-04-21)
+
+
+### Features
+
+* GOST and MVD schemas ([36688f7](https://github.com/nalgeon/iuliia-py/commit/36688f7f01858ee6f00bb7ef92a2e39da22b308f))
+
+
+
 # 0.5.0 (2020-04-20)
 
 
