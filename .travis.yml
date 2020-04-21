@@ -1,7 +1,7 @@
 language: python
 python:
     - "3.7"
-install: pip install coverage coveralls flake8 pylint pytest
+install: pip install coverage coveralls flake8 mccabe pylint pytest
 script:
     - flake8 iuliia
     - pylint iuliia
