@@ -47,7 +47,6 @@ And deprecated ones:
 - MVD 310-1997 (`iuliia.MVD_310` and `iuliia.MVD_310_FR`)
 - MVD 782-2000 (`iuliia.MVD_782`)
 
-For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
 
 ## Installation
 
