@@ -1,3 +1,17 @@
+# 0.7.0 (2020-04-22)
+
+
+### Bug Fixes
+
+* mapping capitalization for different cases ([105d955](https://github.com/nalgeon/iuliia-py/commit/105d9551830c1149b14103c13ddc6ddb716289a3))
+
+
+### Features
+
+* ICAO, ISO and telegram schemas ([26e3900](https://github.com/nalgeon/iuliia-py/commit/26e390068e86c86913a7a8a74d288613585f88fb))
+
+
+
 # 0.6.0 (2020-04-21)
 
 
