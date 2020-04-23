@@ -24,15 +24,15 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 
 Supports actual schemas:
 
-- ALA-LC (coming soon)
-- BGN/PCGN (coming soon)
-- BS 2979:1958 (coming soon)
+- ALA-LC (`iuliia.ALA_LC` and `iuliia.ALA_LC_ALT`)
+- BGN/PCGN (`iuliia.BGN_PCGN` and `iuliia.BGN_PCGN_ALT`)
+- BS 2979:1958 (`iuliia.BS_2979` and `iuliia.BS_2979_ALT`)
 - GOST R 52290-2004 (`iuliia.GOST_52290`)
 - GOST R 7.0.34-2014 (`iuliia.GOST_7034`)
 - ICAO DOC 9303 (`iuliia.ICAO_DOC_9303`)
 - ISO 9:1995 aka GOST 7.79-2000 (`iuliia.GOST_779` and `iuliia.GOST_779_ALT`)
-- UNGEGN 1987 V/18 (coming soon)
-- Scientific (coming soon)
+- UNGEGN 1987 V/18 (`iuliia.UNGEGN_1987`)
+- Scientific (`iuliia.SCIENTIFIC`)
 - Telegram (`iuliia.TELEGRAM`)
 - Wikipedia (`iuliia.WIKIPEDIA`)
 - Yandex.Maps (`iuliia.YANDEX_MAPS`)
@@ -47,6 +47,11 @@ And deprecated ones:
 - MVD 310-1997 (`iuliia.MVD_310` and `iuliia.MVD_310_FR`)
 - MVD 782-2000 (`iuliia.MVD_782`)
 
+Known issues:
+
+- *BS 2979:1958*. This schema defines two alternative translations for `Ы`: `Ы` → `Ȳ` (used by the Oxford University Press) and `Ы` → `UI` (used by the British Library). `iuliia` uses `Ы` → `Ȳ`.
+- *GOST R 7.0.34-2014*. This schema defines alternatives for many letters, but does not specify when to use which. Therefore, `iuliia` uses the first of suggested translations for each such letter.
+- *MVD-310*. This schema defines "`С` between two vowels → `SS`" rule. There is no such rule in other schemas, and MVD-310 itself is deprecated, so I decided to ignore this specific rule for the sake of code simplicity.
 
 ## Installation
 

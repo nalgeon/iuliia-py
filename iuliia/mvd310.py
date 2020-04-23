@@ -53,8 +53,10 @@ FR_PREV_MAPPING = {"ге": "ue", "ги": "ui", "гы": "uy", "ье": "ie", "кс
 FR_NEXT_MAPPING = {"кс": ""}
 FR_ENDING_MAPPING = {"ин": "ine"}
 
-# Not implemented:
-# `С` between two vowels → `SS` (Гусев → Goussev)
+# This schema defines the following rule for the French mapping:
+# > `С` between two vowels → `SS`
+# There is no such rule in other schemas, and MVD-310 itself is deprecated,
+# so I decided to ignore this specific rule for the sake of code simplicity.
 
 MVD_310 = Schema(EN_MAPPING, prev_mapping=EN_PREV_MAPPING, next_mapping=EN_NEXT_MAPPING)
 MVD_310_FR = Schema(

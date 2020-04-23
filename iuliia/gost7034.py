@@ -5,23 +5,26 @@ http://localhost:3000/iuliia/gost-7034/
 
 from .schema import Schema, BASE_MAPPING
 
+# This schema defines alternatives for many letters, but does not specify when to use which.
+# Therefore, `iuliia` uses the first of suggested translations for each such letter.
 MAPPING = {
     **BASE_MAPPING,
     **{
-        "ё": "yo",
+        "е": "e",  # (ye)
+        "ё": "yo",  # (jo)
         "ж": "zh",
-        "й": "j",
-        "х": "x",
-        "ц": "c",
+        "й": "j",  # (i,y)
+        "х": "x",  # (kh)
+        "ц": "c",  # (tz,cz)
         "ч": "ch",
         "ш": "sh",
         "щ": "shh",
-        "ъ": "''",
+        "ъ": "''",  # (empty)
         "ы": "y",
-        "ь": "'",
+        "ь": "'",  # (empty)
         "э": "e",
-        "ю": "yu",
-        "я": "ya",
+        "ю": "yu",  # (ju)
+        "я": "ya",  # (ja)
     },
 }
 
