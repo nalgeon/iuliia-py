@@ -1,3 +1,12 @@
+# 0.8.0 (2020-04-23)
+
+
+### Features
+
+* UN, scientific and library schemas ([d3f8462](https://github.com/nalgeon/iuliia-py/commit/d3f8462359e8c731d4b41cc92ff01bbf1ca6cfad))
+
+
+
 # 0.7.0 (2020-04-22)
 
 
