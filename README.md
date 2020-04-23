@@ -53,6 +53,8 @@ Known issues:
 - *GOST R 7.0.34-2014*. This schema defines alternatives for many letters, but does not specify when to use which. Therefore, `iuliia` uses the first of suggested translations for each such letter.
 - *MVD-310*. This schema defines "`С` between two vowels → `SS`" rule. There is no such rule in other schemas, and MVD-310 itself is deprecated, so I decided to ignore this specific rule for the sake of code simplicity.
 
+For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
+
 ## Installation
 
 ```sh
