@@ -1,28 +1,29 @@
 """
-ISO/R 9:1954 transliteration schema.
-https://dangry.ru/iuliia/iso-9-1954/
+Scientific transliteration schema.
+https://dangry.ru/iuliia/scientific/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 MAPPING = {
     **BASE_MAPPING,
     **{
-        "ё": "ë",
+        "ё": "ё",
         "ж": "ž",
         "й": "j",
-        "х": "h",
+        "х": "x",
         "ц": "c",
         "ч": "č",
         "ш": "š",
         "щ": "šč",
-        "ъ": '"',
+        "ъ": "ʺ",
         "ы": "y",
         "ь": "ʹ",
-        "э": "ė",
+        "э": "è",
         "ю": "ju",
         "я": "ja",
     },
 }
 
-ISO_9_1954 = Schema(MAPPING)
+SCIENTIFIC = Schema(MAPPING)

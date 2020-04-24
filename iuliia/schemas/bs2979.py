@@ -3,7 +3,8 @@ British Standard 2979:1958 transliteration schema.
 https://dangry.ru/iuliia/bs-2979/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 MAPPING = {
     **BASE_MAPPING,

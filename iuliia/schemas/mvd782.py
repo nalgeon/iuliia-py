@@ -1,9 +1,10 @@
 """
-GOST R 52290-2004 transliteration schema.
-https://dangry.ru/iuliia/gost-52290/
+MVD 782-2000 transliteration schema.
+https://dangry.ru/iuliia/mvd-782/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 MAPPING = {
     **BASE_MAPPING,
@@ -60,6 +61,8 @@ PREV_MAPPING = {
     "чё": "e",
     "шё": "e",
     "щё": "e",
+    # и
+    "ьи": "yi",
 }
 
 NEXT_MAPPING = {
@@ -67,6 +70,7 @@ NEXT_MAPPING = {
     "ье": "",
     "ъё": "",
     "ьё": "",
+    "ьи": "",
 }
 
-GOST_52290 = Schema(MAPPING, prev_mapping=PREV_MAPPING, next_mapping=NEXT_MAPPING)
+MVD_782 = Schema(MAPPING, prev_mapping=PREV_MAPPING, next_mapping=NEXT_MAPPING)

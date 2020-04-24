@@ -3,7 +3,8 @@ MVD 310-1997 transliteration schema.
 https://dangry.ru/iuliia/mvd-310/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 EN_MAPPING = {
     **BASE_MAPPING,

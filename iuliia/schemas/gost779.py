@@ -3,7 +3,8 @@ GOST 7.79-2000 (aka ISO 9:1995) transliteration schema.
 https://dangry.ru/iuliia/gost-779/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 MAPPING = {
     **BASE_MAPPING,

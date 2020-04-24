@@ -3,7 +3,8 @@ GOST 16876-71 (aka GOST 1983) transliteration schema.
 https://dangry.ru/iuliia/gost-16876/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 MAPPING = {
     **BASE_MAPPING,

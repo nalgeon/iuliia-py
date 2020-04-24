@@ -1,8 +1,8 @@
 """
-Transate engine.
+Translate engine.
 """
 
-from iuliia.schema import Schema
+from .schema import Schema
 
 
 def translate(source: str, schema: Schema):

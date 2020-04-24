@@ -3,7 +3,8 @@ GOST R 7.0.34-2014 transliteration schema.
 http://localhost:3000/iuliia/gost-7034/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 # This schema defines alternatives for many letters, but does not specify when to use which.
 # Therefore, `iuliia` uses the first of suggested translations for each such letter.

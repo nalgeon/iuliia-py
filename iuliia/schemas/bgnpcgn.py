@@ -3,7 +3,8 @@ BGN/PCGN transliteration schema.
 https://dangry.ru/iuliia/bgn-pcgn/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 MAPPING = {
     **BASE_MAPPING,

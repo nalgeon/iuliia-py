@@ -3,7 +3,8 @@ ISO/R 9:1968 transliteration schema.
 https://dangry.ru/iuliia/iso-9-1968/
 """
 
-from .schema import Schema, BASE_MAPPING
+from iuliia.mapping import BASE_MAPPING
+from iuliia.schema import Schema
 
 MAPPING = {
     **BASE_MAPPING,

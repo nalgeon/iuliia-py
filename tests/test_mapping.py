@@ -1,5 +1,5 @@
 import pytest
-from iuliia.schema import Mapping, LetterMapping, PrevMapping, NextMapping, EndingMapping
+from iuliia.mapping import Mapping, LetterMapping, PrevMapping, NextMapping, EndingMapping
 
 
 @pytest.fixture
