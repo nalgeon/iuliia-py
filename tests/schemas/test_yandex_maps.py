@@ -6,6 +6,11 @@ import iuliia
     "source,expected",
     [
         (
+            "Юлия, съешь ещё этих мягких французских булок из Йошкар-Олы, да выпей алтайского чаю",
+            "Yuliya, syesh eschyo etikh myagkikh frantsuzskikh bulok iz Yoshkar-Oly, "
+            "da vypey altayskogo chayu",
+        ),
+        (
             "Россия, город Йошкар-Ола, улица Яна Крастыня",
             "Rossiya, gorod Yoshkar-Ola, ulitsa Yana Krastynya",
         ),

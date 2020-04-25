@@ -5,6 +5,11 @@ import iuliia
 @pytest.mark.parametrize(
     "source,expected",
     [
+        (
+            "Юлия, съешь ещё этих мягких французских булок из Йошкар-Олы, да выпей алтайского чаю",
+            "Iuliia, sieesh eshche etikh miagkikh frantsuzskikh bulok iz Ioshkar-Oly, "
+            "da vypei altaiskogo chaiu",
+        ),
         ("Юлия Щеглова", "Iuliia Shcheglova"),
         ("Гайа Васильева", "Gaia Vasileva"),
         ("Андрей Видный", "Andrei Vidnyi"),

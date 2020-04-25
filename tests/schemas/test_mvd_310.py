@@ -5,6 +5,11 @@ import iuliia
 @pytest.mark.parametrize(
     "source,expected",
     [
+        (
+            "Юлия, съешь ещё этих мягких французских булок из Йошкар-Олы, да выпей алтайского чаю",
+            "Yuliya, syesh' eshche etikh myagkikh frantsuzskikh bulok iz Yoshkar-Oly, "
+            "da vypey altayskogo chayu",
+        ),
         ("Юлия Щеглова", "Yuliya Shcheglova"),
         ("Гайа Васильева", "Gaya Vasilyeva"),
         ("Андрей Видный", "Andrey Vidnyy"),
@@ -17,6 +22,11 @@ def test_mvd_310(source, expected):
 @pytest.mark.parametrize(
     "source,expected",
     [
+        (
+            "Юлия, съешь ещё этих мягких французских булок из Йошкар-Олы, да выпей алтайского чаю",
+            "Iouliia, sech echtche etikh miagkikh frantsouzskikh boulok iz Iochkar-Oly, "
+            "da vypei altaiskogo tchaiou",
+        ),
         ("Юлия Щеглова", "Iouliia Chtcheglova"),
         ("Гайа Васильева", "Gaia Vasilieva"),
         ("Андрей Видный", "Andrei Vidnyi"),
