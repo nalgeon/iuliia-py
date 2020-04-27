@@ -1,3 +1,9 @@
+# 0.10.0 (2020-04-27)
+
+### Features
+
+-   Declarative schema definition ([bc902e5](https://github.com/nalgeon/iuliia-py/commit/bc902e503cb5b5b26093e890aff68fedbf3fb230))
+
 # 0.9.0 (2020-04-24)
 
 -   Refactored transliteration schemas into separate package. Nothing changed in external API.
