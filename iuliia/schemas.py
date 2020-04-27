@@ -14,7 +14,7 @@ def _schema_loader():
 
 
 def _definition_reader():
-    schemas_path = Path(__file__).parent.parent / "schemas"
+    schemas_path = Path(__file__).parent / "schemas"
     if not schemas_path.exists():
         raise ValueError(f"Schema path does not exist: {schemas_path}")
     paths = schemas_path.glob("*.json")
