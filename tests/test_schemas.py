@@ -1,3 +1,4 @@
+import pytest
 import iuliia
 
 
@@ -35,4 +36,16 @@ def test_schema_names():
 
 def test_get_schema_by_name():
     schema = iuliia.Schemas.get("wikipedia")
-    assert schema == iuliia.WIKIPEDIA
+    assert schema.name == "wikipedia"
+
+
+def _sample_reader():
+    for schema_item in iuliia.schemas.Schemas:
+        schema = schema_item.value
+        for source, expected in schema.samples:
+            yield schema, source, expected
+
+
+@pytest.mark.parametrize("schema,source,expected", _sample_reader())
+def test_samples(schema, source, expected):
+    assert iuliia.translate(source, schema) == expected
