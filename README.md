@@ -1,4 +1,5 @@
 # `Iuliia`
+
 > Transliterate Cyrillic → Latin in every possible way
 
 [![PyPI Version][pypi-image]][pypi-url]
@@ -18,40 +19,41 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 
 ## Why use `Iuliia`
 
-- 19 transliteration schemas (rule sets), including all main international and Russian standards.
-- Correctly implements not only the base mapping, but all the special rules for letter combinations and word endings (AFAIK, Iuliia is the only library which does so).
-- Simple API and zero third-party dependencies.
+-   20 transliteration schemas (rule sets), including all main international and Russian standards.
+-   Correctly implements not only the base mapping, but all the special rules for letter combinations and word endings (AFAIK, Iuliia is the only library which does so).
+-   Simple API and zero third-party dependencies.
 
 Supports actual schemas:
 
-- ALA-LC (`iuliia.ALA_LC` and `iuliia.ALA_LC_ALT`)
-- BGN/PCGN (`iuliia.BGN_PCGN` and `iuliia.BGN_PCGN_ALT`)
-- BS 2979:1958 (`iuliia.BS_2979` and `iuliia.BS_2979_ALT`)
-- GOST R 52290-2004 (`iuliia.GOST_52290`)
-- GOST R 7.0.34-2014 (`iuliia.GOST_7034`)
-- ICAO DOC 9303 (`iuliia.ICAO_DOC_9303`)
-- ISO 9:1995 aka GOST 7.79-2000 (`iuliia.GOST_779` and `iuliia.GOST_779_ALT`)
-- UNGEGN 1987 V/18 (`iuliia.UNGEGN_1987`)
-- Scientific (`iuliia.SCIENTIFIC`)
-- Telegram (`iuliia.TELEGRAM`)
-- Wikipedia (`iuliia.WIKIPEDIA`)
-- Yandex.Maps (`iuliia.YANDEX_MAPS`)
-- Yandex.Money (`iuliia.YANDEX_MONEY`)
+-   ALA-LC (`iuliia.ALA_LC` and `iuliia.ALA_LC_ALT`)
+-   BGN/PCGN (`iuliia.BGN_PCGN` and `iuliia.BGN_PCGN_ALT`)
+-   BS 2979:1958 (`iuliia.BS_2979` and `iuliia.BS_2979_ALT`)
+-   GOST R 52290-2004 (`iuliia.GOST_52290`)
+-   GOST R 7.0.34-2014 (`iuliia.GOST_7034`)
+-   ICAO DOC 9303 (`iuliia.ICAO_DOC_9303`)
+-   ISO 9:1995 aka GOST 7.79-2000 (`iuliia.GOST_779` and `iuliia.GOST_779_ALT`)
+-   UNGEGN 1987 V/18 (`iuliia.UNGEGN_1987`)
+-   Moscow Metro map (`iuliia.MOSMETRO`)
+-   Scientific (`iuliia.SCIENTIFIC`)
+-   Telegram (`iuliia.TELEGRAM`)
+-   Wikipedia (`iuliia.WIKIPEDIA`)
+-   Yandex.Maps (`iuliia.YANDEX_MAPS`)
+-   Yandex.Money (`iuliia.YANDEX_MONEY`)
 
 And deprecated ones:
 
-- GOST 16876-71 (`iuliia.GOST_16876` and `iuliia.GOST_16876_ALT`)
-- GOST R 52535.1-2006 (`iuliia.GOST_52535`)
-- ISO/R 9:1954 (`iuliia.ISO_9_1954`)
-- ISO/R 9:1968 (`iuliia.ISO_9_1968` and `iuliia.ISO_9_1968_ALT`)
-- MVD 310-1997 (`iuliia.MVD_310` and `iuliia.MVD_310_FR`)
-- MVD 782-2000 (`iuliia.MVD_782`)
+-   GOST 16876-71 (`iuliia.GOST_16876` and `iuliia.GOST_16876_ALT`)
+-   GOST R 52535.1-2006 (`iuliia.GOST_52535`)
+-   ISO/R 9:1954 (`iuliia.ISO_9_1954`)
+-   ISO/R 9:1968 (`iuliia.ISO_9_1968` and `iuliia.ISO_9_1968_ALT`)
+-   MVD 310-1997 (`iuliia.MVD_310` and `iuliia.MVD_310_FR`)
+-   MVD 782-2000 (`iuliia.MVD_782`)
 
 Known issues:
 
-- *BS 2979:1958*. This schema defines two alternative translations for `Ы`: `Ы` → `Ȳ` (used by the Oxford University Press) and `Ы` → `UI` (used by the British Library). `iuliia` uses `Ы` → `Ȳ`.
-- *GOST R 7.0.34-2014*. This schema defines alternatives for many letters, but does not specify when to use which. Therefore, `iuliia` uses the first of suggested translations for each such letter.
-- *MVD-310*. This schema defines "`С` between two vowels → `SS`" rule. There is no such rule in other schemas, and MVD-310 itself is deprecated, so I decided to ignore this specific rule for the sake of code simplicity.
+-   _BS 2979:1958_. This schema defines two alternative translations for `Ы`: `Ы` → `Ȳ` (used by the Oxford University Press) and `Ы` → `UI` (used by the British Library). `iuliia` uses `Ы` → `Ȳ`.
+-   _GOST R 7.0.34-2014_. This schema defines alternatives for many letters, but does not specify when to use which. Therefore, `iuliia` uses the first of suggested translations for each such letter.
+-   _MVD-310_. This schema defines "`С` between two vowels → `SS`" rule. There is no such rule in other schemas, and MVD-310 itself is deprecated, so I decided to ignore this specific rule for the sake of code simplicity.
 
 For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
 
@@ -112,6 +114,7 @@ Use [Black](https://black.readthedocs.io/en/stable/) for code formatting and [Co
 [MIT](https://choosealicense.com/licenses/mit/)
 
 <!-- Markdown link & img dfn's -->
+
 [pypi-image]: https://img.shields.io/pypi/v/iuliia?style=flat-square
 [pypi-url]: https://pypi.org/project/iuliia/
 [build-image]: https://img.shields.io/travis/nalgeon/iuliia-py?style=flat-square

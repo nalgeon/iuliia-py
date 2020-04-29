@@ -27,6 +27,7 @@ ICAO_DOC_9303 = Schemas.icao_doc_9303.value
 ISO_9_1954 = Schemas.iso_9_1954.value
 ISO_9_1968 = Schemas.iso_9_1968.value
 ISO_9_1968_ALT = Schemas.iso_9_1968_alt.value
+MOSMETRO = Schemas.mosmetro.value
 MVD_310 = Schemas.mvd_310.value
 MVD_310_FR = Schemas.mvd_310_fr.value
 MVD_782 = Schemas.mvd_782.value
