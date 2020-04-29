@@ -1,3 +1,9 @@
+# 0.11.0 (2020-04-29)
+
+### Features
+
+-   Moscow Metro map schema ([2d86f19](https://github.com/nalgeon/iuliia-py/commit/2d86f193b27f0b94ea7090c726a3f9d86c56c174))
+
 # 0.10.0 (2020-04-27)
 
 ### Features
