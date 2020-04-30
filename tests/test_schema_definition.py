@@ -35,21 +35,21 @@ def test_invalid_name():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({})
         defn.parse()
-    assert str(exc.value) == "Invalid schema name: None"
+    assert str(exc.value) == "None: Missing schema name"
 
 
 def test_empty_name():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": ""})
         defn.parse()
-    assert str(exc.value) == "Invalid schema name: "
+    assert str(exc.value) == "None: Schema name should not be empty"
 
 
 def test_invalid_mapping():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": "test"})
         defn.parse()
-    assert str(exc.value) == "test: Invalid mapping: None"
+    assert str(exc.value) == "test: Missing schema mapping"
 
 
 def test_empty_mapping():
@@ -62,7 +62,7 @@ def test_invalid_prev_mapping():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": "test", "mapping": {}, "prev_mapping": "42"})
         defn.parse()
-    assert str(exc.value) == "test: Invalid prev_mapping: 42"
+    assert str(exc.value) == "test: Invalid schema prev_mapping: 42"
 
 
 def test_missing_prev_mapping():
@@ -81,7 +81,7 @@ def test_invalid_next_mapping():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": "test", "mapping": {}, "next_mapping": "42"})
         defn.parse()
-    assert str(exc.value) == "test: Invalid next_mapping: 42"
+    assert str(exc.value) == "test: Invalid schema next_mapping: 42"
 
 
 def test_missing_next_mapping():
@@ -100,7 +100,7 @@ def test_invalid_ending_mapping():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": "test", "mapping": {}, "ending_mapping": "42"})
         defn.parse()
-    assert str(exc.value) == "test: Invalid ending_mapping: 42"
+    assert str(exc.value) == "test: Invalid schema ending_mapping: 42"
 
 
 def test_missing_ending_mapping():
@@ -119,28 +119,28 @@ def test_invalid_samples():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": "test", "mapping": {}, "samples": {}})
         defn.parse()
-    assert str(exc.value) == "test: Invalid samples: {}"
+    assert str(exc.value) == "test: Invalid schema samples: {}"
 
 
 def test_invalid_sample_not_list():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": "test", "mapping": {}, "samples": ["42"]})
         defn.parse()
-    assert str(exc.value) == "test: Invalid sample: 42"
+    assert str(exc.value) == "test: Invalid schema sample: 42"
 
 
 def test_invalid_sample_length():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": "test", "mapping": {}, "samples": [["aa"]]})
         defn.parse()
-    assert str(exc.value) == "test: Invalid sample: ['aa']"
+    assert str(exc.value) == "test: Invalid schema sample: ['aa']"
 
 
 def test_invalid_sample_type():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": "test", "mapping": {}, "samples": [["aa", {}]]})
         defn.parse()
-    assert str(exc.value) == "test: Invalid sample: ['aa', {}]"
+    assert str(exc.value) == "test: Invalid schema sample: ['aa', {}]"
 
 
 def test_missing_samples():

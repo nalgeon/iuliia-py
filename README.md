@@ -19,35 +19,9 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 
 ## Why use `Iuliia`
 
--   20 transliteration schemas (rule sets), including all main international and Russian standards.
+-   [20 transliteration schemas](https://github.com/nalgeon/iuliia/blob/master/README.md#supported-schemas) (rule sets), including all main international and Russian standards.
 -   Correctly implements not only the base mapping, but all the special rules for letter combinations and word endings (AFAIK, Iuliia is the only library which does so).
 -   Simple API and zero third-party dependencies.
-
-Supports actual schemas:
-
--   ALA-LC (`iuliia.ALA_LC` and `iuliia.ALA_LC_ALT`)
--   BGN/PCGN (`iuliia.BGN_PCGN` and `iuliia.BGN_PCGN_ALT`)
--   BS 2979:1958 (`iuliia.BS_2979` and `iuliia.BS_2979_ALT`)
--   GOST R 52290-2004 (`iuliia.GOST_52290`)
--   GOST R 7.0.34-2014 (`iuliia.GOST_7034`)
--   ICAO DOC 9303 (`iuliia.ICAO_DOC_9303`)
--   ISO 9:1995 aka GOST 7.79-2000 (`iuliia.GOST_779` and `iuliia.GOST_779_ALT`)
--   UNGEGN 1987 V/18 (`iuliia.UNGEGN_1987`)
--   Moscow Metro map (`iuliia.MOSMETRO`)
--   Scientific (`iuliia.SCIENTIFIC`)
--   Telegram (`iuliia.TELEGRAM`)
--   Wikipedia (`iuliia.WIKIPEDIA`)
--   Yandex.Maps (`iuliia.YANDEX_MAPS`)
--   Yandex.Money (`iuliia.YANDEX_MONEY`)
-
-And deprecated ones:
-
--   GOST 16876-71 (`iuliia.GOST_16876` and `iuliia.GOST_16876_ALT`)
--   GOST R 52535.1-2006 (`iuliia.GOST_52535`)
--   ISO/R 9:1954 (`iuliia.ISO_9_1954`)
--   ISO/R 9:1968 (`iuliia.ISO_9_1968` and `iuliia.ISO_9_1968_ALT`)
--   MVD 310-1997 (`iuliia.MVD_310` and `iuliia.MVD_310_FR`)
--   MVD 782-2000 (`iuliia.MVD_782`)
 
 For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
 
@@ -61,24 +35,57 @@ pip install iuliia
 
 ## Usage
 
-API:
+List all supported schemas:
 
 ```python
-import iuliia
+>>> import iuliia
+>>> import iuliia
+>>> for name, schema in iuliia.Schemas.items():
+...     print("{0:<20}{1}".format(name, schema.description))
+...
+ala_lc              ALA-LC transliteration schema.
+ala_lc_alt          ALA-LC transliteration schema.
+bgn_pcgn            BGN/PCGN transliteration schema
+bgn_pcgn_alt        BGN/PCGN transliteration schema
+bs_2979             British Standard 2979:1958 transliteration schema
+bs_2979_alt         British Standard 2979:1958 transliteration schema
+gost_16876          GOST 16876-71 (aka GOST 1983) transliteration schema
+gost_16876_alt      GOST 16876-71 (aka GOST 1983) transliteration schema
+gost_52290          GOST R 52290-2004 transliteration schema
+gost_52535          GOST R 52535.1-2006 transliteration schema
+gost_7034           GOST R 7.0.34-2014 transliteration schema
+gost_779            GOST 7.79-2000 (aka ISO 9:1995) transliteration schema
+gost_779_alt        GOST 7.79-2000 (aka ISO 9:1995) transliteration schema
+icao_doc_9303       ICAO DOC 9303 transliteration schema
+iso_9_1954          ISO/R 9:1954 transliteration schema
+iso_9_1968          ISO/R 9:1968 transliteration schema
+iso_9_1968_alt      ISO/R 9:1968 transliteration schema
+mosmetro            Moscow Metro map transliteration schema
+mvd_310             MVD 310-1997 transliteration schema
+mvd_310_fr          MVD 310-1997 transliteration schema
+mvd_782             MVD 782-2000 transliteration schema
+scientific          Scientific transliteration schema
+telegram            Telegram transliteration schema
+ungegn_1987         UNGEGN 1987 V/18 transliteration schema
+wikipedia           Wikipedia transliteration schema
+yandex_maps         Yandex.Maps transliteration schema
+yandex_money        Yandex.Money transliteration schema
+```
 
-# list all supported schemas
-for schema_name in iuliia.Schemas.names():
-    print(schema_name)
+Transliterate using specified schema:
 
-# transliterate using specified schema
-source = "Юлия Щеглова"
-iuliia.translate(source, schema=iuliia.ICAO_DOC_9303)
-# "Iuliia Shcheglova"
+```python
+>>> source = "Юлия Щеглова"
+>>> iuliia.translate(source, schema=iuliia.ICAO_DOC_9303)
+'Iuliia Shcheglova'
+```
 
-# or pick schema by name
-schema = iuliia.Schemas.get("wikipedia")
-iuliia.translate(source, schema)
-# "Yuliya Shcheglova"
+Or pick schema by name
+
+```python
+>>> schema = iuliia.Schemas.get("wikipedia")
+>>> iuliia.translate(source, schema)
+'Yuliya Shcheglova'
 ```
 
 Command line:

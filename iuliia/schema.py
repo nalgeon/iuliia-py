@@ -19,8 +19,10 @@ class Schema:
         next_mapping: dict = None,
         ending_mapping: dict = None,
         samples: list = None,
+        description: str = None,
     ):
         self.name = name
+        self.description = description
         self.map = LetterMapping(mapping)
         self.prev_map = PrevMapping(prev_mapping or {})
         self.next_map = NextMapping(next_mapping or {})
@@ -58,6 +60,7 @@ class Schema:
         defn.parse()
         return Schema(
             name=defn.name,
+            description=defn.description,
             mapping=defn.mapping,
             prev_mapping=defn.prev_mapping,
             next_mapping=defn.next_mapping,
@@ -66,12 +69,14 @@ class Schema:
         )
 
 
+# pylint: disable=too-many-instance-attributes
 class SchemaDefinition:
     """Translitiration schema definition."""
 
     def __init__(self, source: dict):
         self.source = source
         self.name = None
+        self.description = None
         self.mapping = None
         self.prev_mapping = None
         self.next_mapping = None
@@ -80,42 +85,35 @@ class SchemaDefinition:
 
     def parse(self):
         """Parse source definition, raising ValueError if necessary."""
-        self._parse_name()
-        self._parse_mapping("mapping")
-        self._parse_mapping_or_none("prev_mapping")
-        self._parse_mapping_or_none("next_mapping")
-        self._parse_mapping_or_none("ending_mapping")
+        self._parse_attr("name", type_=str, required=True, nonempty=True)
+        self._parse_attr("description", type_=str, required=False)
+        self._parse_attr("mapping", type_=dict, required=True)
+        self._parse_attr("prev_mapping", type_=dict, required=False)
+        self._parse_attr("next_mapping", type_=dict, required=False)
+        self._parse_attr("ending_mapping", type_=dict, required=False)
         self._parse_samples()
 
-    def _parse_name(self):
-        name = self.source.get("name")
-        if not name or not isinstance(name, str):
-            raise ValueError(f"Invalid schema name: {name}")
-        self.name = name
-
-    def _parse_mapping(self, mapping_name: str):
-        mapping = self.source.get(mapping_name)
-        if mapping is None or not isinstance(mapping, dict):
-            raise ValueError(f"{self.name}: Invalid {mapping_name}: {mapping}")
-        setattr(self, mapping_name, mapping)
-
-    def _parse_mapping_or_none(self, mapping_name: str):
-        mapping = self.source.get(mapping_name)
-        if mapping is not None and not isinstance(mapping, dict):
-            raise ValueError(f"{self.name}: Invalid {mapping_name}: {mapping}")
-        setattr(self, mapping_name, mapping)
+    def _parse_attr(self, name, type_, required, nonempty=False):
+        value = self.source.get(name)
+        if required and value is None:
+            raise ValueError(f"{self.name}: Missing schema {name}")
+        if required and nonempty and not value:
+            raise ValueError(f"{self.name}: Schema {name} should not be empty")
+        if value is not None and not isinstance(value, type_):
+            raise ValueError(f"{self.name}: Invalid schema {name}: {value}")
+        setattr(self, name, value)
 
     def _parse_samples(self):
         samples = self.source.get("samples")
         if samples is not None and not isinstance(samples, list):
-            raise ValueError(f"{self.name}: Invalid samples: {samples}")
+            raise ValueError(f"{self.name}: Invalid schema samples: {samples}")
         if samples:
             for sample in samples:
                 self._raise_on_invalid_sample(sample)
         self.samples = samples
 
     def _raise_on_invalid_sample(self, sample):
-        message = f"{self.name}: Invalid sample: {sample}"
+        message = f"{self.name}: Invalid schema sample: {sample}"
         if not isinstance(sample, list):
             raise ValueError(message)
         if len(sample) != 2:

@@ -3,9 +3,10 @@ Transliteration schema registry.
 """
 
 import json
+from operator import attrgetter
 from pathlib import Path
 from enum import Enum
-from typing import List
+from typing import List, Tuple
 from iuliia.schema import Schema
 
 
@@ -33,8 +34,13 @@ class _Schemas(Enum):
 
     @classmethod
     def names(cls) -> List[str]:
-        """Return sorted list of all supported schemas."""
+        """Return names of all supported schemas."""
         return sorted(item.name for item in cls)
+
+    @classmethod
+    def items(cls) -> List[Tuple[str, Schema]]:
+        """Return all supported schemas."""
+        return [(item.name, item.value) for item in sorted(cls, key=attrgetter("value.name"))]
 
     @classmethod
     def get(cls, name: str) -> Schema:

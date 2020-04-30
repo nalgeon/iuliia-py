@@ -35,6 +35,12 @@ def test_schema_names():
     ]
 
 
+def test_schema_items():
+    items = iuliia.Schemas.items()
+    assert len(items) == 27
+    assert items[0] == ("ala_lc", iuliia.Schemas.get("ala_lc"))
+
+
 def test_get_schema_by_name():
     schema = iuliia.Schemas.get("wikipedia")
     assert schema.name == "wikipedia"
