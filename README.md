@@ -49,13 +49,9 @@ And deprecated ones:
 -   MVD 310-1997 (`iuliia.MVD_310` and `iuliia.MVD_310_FR`)
 -   MVD 782-2000 (`iuliia.MVD_782`)
 
-Known issues:
-
--   _BS 2979:1958_. This schema defines two alternative translations for `Ы`: `Ы` → `Ȳ` (used by the Oxford University Press) and `Ы` → `UI` (used by the British Library). `iuliia` uses `Ы` → `Ȳ`.
--   _GOST R 7.0.34-2014_. This schema defines alternatives for many letters, but does not specify when to use which. Therefore, `iuliia` uses the first of suggested translations for each such letter.
--   _MVD-310_. This schema defines "`С` between two vowels → `SS`" rule. There is no such rule in other schemas, and MVD-310 itself is deprecated, so I decided to ignore this specific rule for the sake of code simplicity.
-
 For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
+
+[Issues and limitations](https://github.com/nalgeon/iuliia/blob/master/README.md#issues-and-limitations)
 
 ## Installation
 
