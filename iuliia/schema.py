@@ -1,7 +1,7 @@
 """
 Transliteration schema base features.
 """
-
+from typing import Dict, List
 from .mapping import LetterMapping, PrevMapping, NextMapping, EndingMapping
 
 
@@ -14,11 +14,11 @@ class Schema:
     def __init__(
         self,
         name: str,
-        mapping: dict,
-        prev_mapping: dict = None,
-        next_mapping: dict = None,
-        ending_mapping: dict = None,
-        samples: list = None,
+        mapping: Dict[str, str],
+        prev_mapping: Dict[str, str] = None,
+        next_mapping: Dict[str, str] = None,
+        ending_mapping: Dict[str, str] = None,
+        samples: List[List[str]] = None,
         description: str = None,
     ):
         self.name = name
@@ -75,13 +75,13 @@ class SchemaDefinition:
 
     def __init__(self, source: dict):
         self.source = source
-        self.name = None
-        self.description = None
-        self.mapping = None
+        self.name = ""
+        self.description: None
+        self.mapping: Dict[str, str] = {}
         self.prev_mapping = None
         self.next_mapping = None
         self.ending_mapping = None
-        self.samples = None
+        self.samples: List[List[str]] = []
 
     def parse(self):
         """Parse source definition, raising ValueError if necessary."""

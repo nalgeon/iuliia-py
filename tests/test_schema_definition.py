@@ -6,7 +6,7 @@ def test_init():
     source = {"whatever": "42"}
     defn = SchemaDefinition(source)
     assert defn.source == source
-    assert defn.name is None
+    assert defn.name == ""
 
 
 def test_parse_mapping():
@@ -35,14 +35,14 @@ def test_invalid_name():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({})
         defn.parse()
-    assert str(exc.value) == "None: Missing schema name"
+    assert str(exc.value) == ": Missing schema name"
 
 
 def test_empty_name():
     with pytest.raises(ValueError) as exc:
         defn = SchemaDefinition({"name": ""})
         defn.parse()
-    assert str(exc.value) == "None: Schema name should not be empty"
+    assert str(exc.value) == ": Schema name should not be empty"
 
 
 def test_invalid_mapping():

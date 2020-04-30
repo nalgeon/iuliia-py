@@ -51,4 +51,6 @@ class _Schemas(Enum):
 
 # All supported transliteration schemas
 # pylint: disable=invalid-name
-Schemas = Enum("Schemas", [(schema.name, schema) for schema in _schema_loader()], type=_Schemas)
+Schemas = Enum(  # type: ignore
+    "Schemas", [(schema.name, schema) for schema in _schema_loader()], type=_Schemas
+)
