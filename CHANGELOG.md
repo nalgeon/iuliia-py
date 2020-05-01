@@ -1,3 +1,7 @@
+# 0.11.1 (2020-04-30)
+
+-   Schema description and Mypy type checking
+
 # 0.11.0 (2020-04-29)
 
 ### Features
