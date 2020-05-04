@@ -98,8 +98,21 @@ Iuliia Shcheglova
 ## Development setup
 
 ```sh
-$ pip install black coverage flake8 pylint pytest tox
+$ make update-schemas
+$ pip install black coverage flake8 mccabe mypy pylint pytest tox
 $ tox
+```
+
+Development tasks (`make ...`):
+
+```
+changelog   Generate changelog
+coverage    Run tests with coverage
+lint        Lint and static-check code
+pull        Pull code and schemas
+push        Push commits and tags
+schemas     Update schemas
+test        Run tests
 ```
 
 ## Contributing
