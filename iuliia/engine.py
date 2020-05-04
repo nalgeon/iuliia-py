@@ -2,7 +2,10 @@
 Translate engine.
 """
 
+import re
 from .schema import Schema
+
+SPLITTER = re.compile(r"\b")
 
 
 def translate(source: str, schema: Schema):
@@ -11,8 +14,12 @@ def translate(source: str, schema: Schema):
     Translates sentences word by word, delegating specifics of transliteration
     to specified schema.
     """
-    translated = (_translate_word(word, schema) for word in source.split())
-    return " ".join(translated)
+    translated = (_translate_word(word, schema) for word in _split_sentence(source))
+    return "".join(translated)
+
+
+def _split_sentence(source: str):
+    return (word for word in SPLITTER.split(source) if word)
 
 
 def _translate_word(word: str, schema: Schema):
