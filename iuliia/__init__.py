@@ -7,7 +7,7 @@ from .engine import translate
 from .schema import Schema
 from .schemas import Schemas
 
-__version__ = "0.11.1"
+__version__ = "0.11.2"
 __all__ = []  # type: ignore
 
 ALA_LC = Schemas.ala_lc.value  # type: ignore

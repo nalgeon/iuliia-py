@@ -1,3 +1,9 @@
+# 0.11.2 (2020-05-04)
+
+### Bug Fixes
+
+-   Split sentence by word boundary ([76fabee](https://github.com/nalgeon/iuliia-py/commit/76fabee8f13f3b3c5374603633c8b19fdeb002e6))
+
 # 0.11.1 (2020-04-30)
 
 -   Schema description and Mypy type checking
