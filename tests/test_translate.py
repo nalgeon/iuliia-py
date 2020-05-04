@@ -1,3 +1,5 @@
+import os
+import timeit
 import pytest
 from iuliia import engine
 from iuliia.schema import Schema
@@ -43,8 +45,24 @@ def test_empty_word():
     [
         ("Hello, mankind!", ["Hello", ", ", "mankind", "!"]),
         ("Привет, человечество!", ["Привет", ", ", "человечество", "!"]),
+        (
+            "(привет) (привет...) привет? а",
+            ["(", "привет", ") (", "привет", "...) ", "привет", "? ", "а"],
+        ),
     ],
 )
 def test_split_sentence(source, expected):
     words = list(engine._split_sentence(source))
     assert words == expected
+
+
+@pytest.mark.skipif(
+    os.getenv("TEST_TIMING") is None, reason="skip timing test until explicitly requested"
+)
+def test_timing():
+    mapping = {chr(i): chr(i) for i in range(ord("a"), ord("z"))}
+    schema = Schema("test", mapping)
+    source = "The quick brown fox jumps over the lazy dog"
+    elapsed_sec = timeit.timeit(lambda: engine.translate(source, schema), number=10000)
+    max_sec = 1.0
+    assert elapsed_sec < max_sec
