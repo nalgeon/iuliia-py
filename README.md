@@ -98,21 +98,29 @@ Iuliia Shcheglova
 ## Development setup
 
 ```sh
-$ make update-schemas
-$ pip install black coverage flake8 mccabe mypy pylint pytest tox
+$ python3 -m venv env
+$ . env/bin/activate
+$ make deps schemas
 $ tox
 ```
 
-Development tasks (`make ...`):
+Development tasks:
 
 ```
-changelog   Generate changelog
-coverage    Run tests with coverage
-lint        Lint and static-check code
-pull        Pull code and schemas
-push        Push commits and tags
-schemas     Update schemas
-test        Run tests
+$ make help
+Usage: make [task]
+
+task                 help
+------               ----
+changelog            Generate changelog
+coverage             Run tests with coverage
+deps                 Install dependencies
+lint                 Lint and static-check code
+pull                 Pull code and schemas
+push                 Push commits and tags
+schemas              Update schemas
+test                 Run tests
+help                 Show help message
 ```
 
 ## Contributing
