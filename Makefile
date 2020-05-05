@@ -1,12 +1,12 @@
 .DEFAULT_GOAL := help
-.PHONY: changelog coverage lint pull push schemas test
+.PHONY: changelog coverage deps help lint pull push schemas test
 
 changelog:  ## Generate changelog
 	conventional-changelog -p angular -i CHANGELOG.md -s
 
 coverage:  ## Run tests with coverage
 	coverage erase
-	coverage run --include=iuliia/* -m pytest
+	coverage run --include=iuliia/* -m pytest -ra
 	coverage report -m
 
 deps:  ## Install dependencies
@@ -28,7 +28,7 @@ schemas:  ## Update schemas
 	cd iuliia/schemas && git submodule update --init --recursive && cd ../..
 
 test:  ## Run tests
-	pytest
+	pytest -ra
 
 help: ## Show help message
 	@IFS=$$'\n' ; \
