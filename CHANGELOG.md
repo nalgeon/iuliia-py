@@ -1,3 +1,9 @@
+# 0.11.3 (2020-05-05)
+
+### Bug Fixes
+
+-   Enforce schema encoding, fixes [#1](https://github.com/nalgeon/iuliia-py/issues/1) ([b810c26](https://github.com/nalgeon/iuliia-py/commit/b810c261936b488c52947f696b8cc486b7c2a4d6))
+
 # 0.11.2 (2020-05-04)
 
 ### Bug Fixes
