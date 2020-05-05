@@ -25,7 +25,7 @@ def _definition_reader():
 
 
 def _load_definition(path):
-    with open(path) as file:
+    with open(path, encoding="utf-8") as file:
         return json.load(file)
 
 
