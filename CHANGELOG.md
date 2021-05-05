@@ -1,3 +1,9 @@
+# 0.11.4 (2021-05-05)
+
+### Bug Fixes
+
+-   Bumped minimal Python version to 3.7, fixes [#3](https://github.com/nalgeon/iuliia-py/issues/3)
+
 # 0.11.3 (2020-05-05)
 
 ### Bug Fixes
