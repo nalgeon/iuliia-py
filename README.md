@@ -23,7 +23,7 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 -   Correctly implements not only the base mapping, but all the special rules for letter combinations and word endings (AFAIK, Iuliia is the only library which does so).
 -   Simple API and zero third-party dependencies.
 
-For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
+For schema details and other information, see [iuliia.ru](https://iuliia.ru/) (in Russian).
 
 [Issues and limitations](https://github.com/nalgeon/iuliia/blob/master/README.md#issues-and-limitations)
 
