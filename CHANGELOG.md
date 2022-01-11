@@ -1,3 +1,9 @@
+# 0.11.5 (2022-01-11)
+
+### Improvements
+
+-   Updated Yandex Maps schema ([d16ffe4](https://github.com/nalgeon/iuliia-py/commit/d16ffe4b5b4f2bde3f8fb2c1799a4b1bf86be354))
+
 # 0.11.4 (2021-05-05)
 
 ### Bug Fixes
