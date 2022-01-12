@@ -3,6 +3,12 @@ name: build
 on:
     push:
         branches: [master]
+        paths:
+            - .github/**
+            - iuliia/**
+            - tests/**
+            - Makefile
+            - tox.ini
     pull_request:
         branches: [master]
     workflow_dispatch:

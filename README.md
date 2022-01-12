@@ -145,5 +145,5 @@ Use [Black](https://black.readthedocs.io/en/stable/) for code formatting and [Co
 [build-url]: https://github.com/nalgeon/iuliia-py/actions/workflows/build.yml
 [coverage-image]: https://codecov.io/gh/nalgeon/iuliia-py/branch/main/graph/badge.svg
 [coverage-url]: https://codecov.io/gh/nalgeon/iuliia-py
-[quality-image]: https://api.codeclimate.com/v1/badges/5e9e634c00ba73017800a5e6/maintainability
+[quality-image]: https://api.codeclimate.com/v1/badges/41548d40f34a3df8ec8a/maintainability
 [quality-url]: https://codeclimate.com/github/nalgeon/iuliia-py
