@@ -28,7 +28,7 @@ jobs:
 
             - name: Install dependencies
               run: |
-                  make deps
+                  make deps schemas
             - name: Run tox
               run: |
                   make tox
