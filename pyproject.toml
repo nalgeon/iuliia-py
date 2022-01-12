@@ -17,3 +17,5 @@ classifiers = [
 [tool.flit.scripts]
 iuliia = "iuliia.__main__:main"
 
+[tool.black]
+line-length = 100

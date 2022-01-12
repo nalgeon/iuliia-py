@@ -139,11 +139,11 @@ Use [Black](https://black.readthedocs.io/en/stable/) for code formatting and [Co
 
 <!-- Markdown link & img dfn's -->
 
-[pypi-image]: https://img.shields.io/pypi/v/iuliia?style=flat-square
+[pypi-image]: https://img.shields.io/pypi/v/iuliia
 [pypi-url]: https://pypi.org/project/iuliia/
-[build-image]: https://img.shields.io/travis/nalgeon/iuliia-py?style=flat-square
-[build-url]: https://travis-ci.org/nalgeon/iuliia-py
-[coverage-image]: https://img.shields.io/coveralls/github/nalgeon/iuliia-py?style=flat-square
-[coverage-url]: https://coveralls.io/github/nalgeon/iuliia-py
-[quality-image]: https://img.shields.io/codeclimate/maintainability/nalgeon/iuliia-py?style=flat-square
+[build-image]:  https://github.com/nalgeon/iuliia-py/actions/workflows/build.yml/badge.svg
+[build-url]: https://github.com/nalgeon/iuliia-py/actions/workflows/build.yml
+[coverage-image]: https://codecov.io/gh/nalgeon/iuliia-py/branch/main/graph/badge.svg
+[coverage-url]: https://codecov.io/gh/nalgeon/iuliia-py
+[quality-image]: https://api.codeclimate.com/v1/badges/5e9e634c00ba73017800a5e6/maintainability
 [quality-url]: https://codeclimate.com/github/nalgeon/iuliia-py

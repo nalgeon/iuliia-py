@@ -1,21 +1,25 @@
 .DEFAULT_GOAL := help
-.PHONY: changelog coverage deps help lint pull push schemas test
+.PHONY: changelog coverage deps help lint publish pull push schemas test tox
 
 changelog:  ## Generate changelog
 	conventional-changelog -p angular -i CHANGELOG.md -s
 
 coverage:  ## Run tests with coverage
-	coverage erase
-	coverage run --include=iuliia/* -m pytest -ra
-	coverage report -m
+	python -m coverage erase
+	python -m coverage run --include=iuliia/* -m pytest -ra
+	python -m coverage report -m
 
 deps:  ## Install dependencies
-	pip install black coverage flake8 mccabe mypy pylint pytest tox
+	python -m pip install --upgrade pip
+	python -m pip install black coverage flake8 flit mccabe mypy pylint pytest tox tox-gh-actions
 
 lint:  ## Lint and static-check code
-	flake8 iuliia
-	pylint iuliia
-	mypy iuliia
+	python -m flake8 iuliia
+	python -m pylint iuliia
+	python -m mypy iuliia
+
+publish:  ## Publish to PyPi
+	python -m flit publish
 
 pull:  ## Pull code and schemas
 	git pull
@@ -28,7 +32,10 @@ schemas:  ## Update schemas
 	cd iuliia/schemas && git submodule update --init --recursive && cd ../..
 
 test:  ## Run tests
-	pytest -ra
+	python -m pytest -ra
+
+tox:  ## Run tests
+	python -m tox
 
 help: ## Show help message
 	@IFS=$$'\n' ; \
