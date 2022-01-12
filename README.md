@@ -141,9 +141,9 @@ Use [Black](https://black.readthedocs.io/en/stable/) for code formatting and [Co
 
 [pypi-image]: https://img.shields.io/pypi/v/iuliia
 [pypi-url]: https://pypi.org/project/iuliia/
-[build-image]:  https://github.com/nalgeon/iuliia-py/actions/workflows/build.yml/badge.svg
+[build-image]: https://github.com/nalgeon/iuliia-py/actions/workflows/build.yml/badge.svg
 [build-url]: https://github.com/nalgeon/iuliia-py/actions/workflows/build.yml
-[coverage-image]: https://codecov.io/gh/nalgeon/iuliia-py/branch/main/graph/badge.svg
+[coverage-image]: https://codecov.io/gh/nalgeon/iuliia-py/branch/master/graph/badge.svg?token=3WGP3C5RQA
 [coverage-url]: https://codecov.io/gh/nalgeon/iuliia-py
 [quality-image]: https://api.codeclimate.com/v1/badges/41548d40f34a3df8ec8a/maintainability
 [quality-url]: https://codeclimate.com/github/nalgeon/iuliia-py
