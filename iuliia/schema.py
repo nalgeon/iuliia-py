@@ -49,6 +49,8 @@ class Schema:
 
     def translate_ending(self, ending: str) -> str | None:
         """Translate word ending according to schema mapping."""
+        if not ending:
+            return None
         return self.ending_map.get(ending)
 
     def __str__(self):

@@ -15,26 +15,29 @@ def translate(source: str, schema: Schema) -> str:
     Translates sentences word by word, delegating specifics of transliteration
     to specified schema.
     """
-    translated = (_translate_word(word, schema) for word in _split_sentence(source))
+    words = (word for word in SPLITTER.split(source) if word)
+    translated = (_translate_word(word, schema) for word in words)
     return "".join(translated)
 
 
-def _split_sentence(source: str) -> Iterator[str]:
-    return (word for word in SPLITTER.split(source) if word)
-
-
 def _translate_word(word: str, schema: Schema) -> str:
+    """Translate word using specified schema."""
     stem, ending = _split_word(word)
-    translated_ending = schema.translate_ending(ending) if ending else None
+    translated_ending = schema.translate_ending(ending)
     if translated_ending:
+        # There is a specific translation for the ending,
+        # so we need to translate the stem and ending separately.
         translated = _translate_letters(stem, schema)
         translated.append(translated_ending)
     else:
+        # There is no specific translation for the ending,
+        # so we can translate the whole word at once.
         translated = _translate_letters(word, schema)
     return "".join(translated)
 
 
 def _translate_letters(word: str, schema: Schema) -> list[str]:
+    """Translate letters of a word using specified schema."""
     translated = []
     for prev, curr, next_ in _letter_reader(word):
         letter = schema.translate_letter(prev, curr, next_)
@@ -43,6 +46,10 @@ def _translate_letters(word: str, schema: Schema) -> list[str]:
 
 
 def _split_word(word: str) -> tuple[str, str]:
+    """
+    Split word into stem and ending.
+    Ending is the last two letters of the word.
+    """
     ending_length = 2
     if len(word) > ending_length:
         stem = word[:-ending_length]
@@ -54,17 +61,9 @@ def _split_word(word: str) -> tuple[str, str]:
 
 
 def _letter_reader(stem: str) -> Iterator[tuple[str, str, str]]:
-    idx = 0
-    prev = ""
-    curr = ""
-    next_ = ""
-    # pylint: disable=C0200
-    for idx in range(0, len(stem)):
-        if curr != "":
-            prev = curr
-        curr = next_ or stem[idx]
-        if idx < len(stem) - 1:
-            next_ = stem[idx + 1]
-        else:
-            next_ = ""
+    """Read letters of a word in (prev, curr, next) tuples."""
+    prev, curr = "", ""
+    for _, next_ in enumerate(stem):
         yield prev, curr, next_
+        prev, curr = curr, next_
+    yield prev, curr, ""

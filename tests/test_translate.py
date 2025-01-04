@@ -40,22 +40,6 @@ def test_empty_word():
     assert engine.translate("", schema) == ""
 
 
-@pytest.mark.parametrize(
-    "source,expected",
-    [
-        ("Hello, mankind!", ["Hello", ", ", "mankind", "!"]),
-        ("Привет, человечество!", ["Привет", ", ", "человечество", "!"]),
-        (
-            "(привет) (привет...) привет? а",
-            ["(", "привет", ") (", "привет", "...) ", "привет", "? ", "а"],
-        ),
-    ],
-)
-def test_split_sentence(source, expected):
-    words = list(engine._split_sentence(source))
-    assert words == expected
-
-
 @pytest.mark.skipif(
     os.getenv("TEST_TIMING") is None, reason="skip timing test until explicitly requested"
 )
