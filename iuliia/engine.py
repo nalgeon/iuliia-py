@@ -61,9 +61,19 @@ def _split_word(word: str) -> tuple[str, str]:
 
 
 def _letter_reader(stem: str) -> Iterator[tuple[str, str, str]]:
-    """Read letters of a word in (prev, curr, next) tuples."""
-    prev, curr = "", ""
-    for _, next_ in enumerate(stem):
+    """
+    Yield letters of a word in (prev, curr, next) tuples.
+    E.g. for "word" it will yield:
+        ("", "w", "o")
+        ("w", "o", "r")
+        ("o", "r", "d")
+        ("r", "d", "")
+    """
+    if not stem:
+        return
+    it = iter(stem)
+    prev, curr = "", next(it, "")
+    for next_ in it:
         yield prev, curr, next_
         prev, curr = curr, next_
     yield prev, curr, ""
