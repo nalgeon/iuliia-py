@@ -29,6 +29,7 @@ def test_schema_names():
         "scientific",
         "telegram",
         "ungegn_1987",
+        "uz",
         "wikipedia",
         "yandex_maps",
         "yandex_money",
@@ -37,7 +38,7 @@ def test_schema_names():
 
 def test_schema_items():
     items = iuliia.Schemas.items()
-    assert len(items) == 27
+    assert len(items) == 28
     assert items[0] == ("ala_lc", iuliia.Schemas.get("ala_lc"))
 
 

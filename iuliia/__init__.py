@@ -33,6 +33,7 @@ MVD_782 = Schemas.mvd_782.value  # type: ignore
 SCIENTIFIC = Schemas.scientific.value  # type: ignore
 TELEGRAM = Schemas.telegram.value  # type: ignore
 UNGEGN_1987 = Schemas.ungegn_1987.value  # type: ignore
+UZ = Schemas.uz.value  # type: ignore
 WIKIPEDIA = Schemas.wikipedia.value  # type: ignore
 YANDEX_MAPS = Schemas.yandex_maps.value  # type: ignore
 YANDEX_MONEY = Schemas.yandex_money.value  # type: ignore
