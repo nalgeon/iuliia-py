@@ -2,11 +2,6 @@
 
 > Transliterate Cyrillic → Latin in every possible way
 
-[![PyPI Version][pypi-image]][pypi-url]
-[![Build Status][build-image]][build-url]
-[![Code Coverage][coverage-image]][coverage-url]
-[![Code Quality][quality-image]][quality-url]
-
 Transliteration means representing Cyrillic data (mainly names and geographic locations) with Latin letters. It is used for international passports, visas, green cards, driving licenses, mail and goods delivery etc.
 
 `Iuliia` makes transliteration as easy as:
@@ -19,8 +14,9 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 
 ## Why use `Iuliia`
 
--   [20 transliteration schemas](https://github.com/nalgeon/iuliia/blob/master/README.md#supported-schemas) (rule sets), including all main international and Russian standards.
--   Correctly implements not only the base mapping, but all the special rules for letter combinations and word endings (AFAIK, Iuliia is the only library which does so).
+-   20 Russian transliteration schemas, including all major international and national standards.
+-   Official Uzbek transliteration schema.
+-   Implements the base mapping and all special rules for letter combinations and word endings.
 -   Simple API and zero third-party dependencies.
 
 For schema details and other information, see [iuliia.ru](https://iuliia.ru/) (in Russian).
@@ -38,13 +34,14 @@ pip install iuliia
 List all supported schemas:
 
 ```python
->>> import iuliia
->>> import iuliia
->>> for name, schema in iuliia.Schemas.items():
-...     print("{0:<20}{1}".format(name, schema.description))
-...
-ala_lc              ALA-LC transliteration schema.
-ala_lc_alt          ALA-LC transliteration schema.
+import iuliia
+for name, schema in iuliia.Schemas.items():
+    print("{0:<20}{1}".format(name, schema.description))
+```
+
+```text
+ala_lc              ALA-LC transliteration schema
+ala_lc_alt          ALA-LC transliteration schema
 bgn_pcgn            BGN/PCGN transliteration schema
 bgn_pcgn_alt        BGN/PCGN transliteration schema
 bs_2979             British Standard 2979:1958 transliteration schema
@@ -67,6 +64,7 @@ mvd_782             MVD 782-2000 transliteration schema
 scientific          Scientific transliteration schema
 telegram            Telegram transliteration schema
 ungegn_1987         UNGEGN 1987 V/18 transliteration schema
+uz                  Uzbekistan cyr-lat transliteration schema
 wikipedia           Wikipedia transliteration schema
 yandex_maps         Yandex.Maps transliteration schema
 yandex_money        Yandex.Money transliteration schema
@@ -101,18 +99,19 @@ Iuliia Shcheglova
 $ python3 -m venv env
 $ . env/bin/activate
 $ make deps schemas
-$ tox
+$ make
 ```
 
 Development tasks:
 
+```text
+make [task]
 ```
-$ make help
-Usage: make [task]
 
+```text
 task                 help
 ------               ----
-changelog            Generate changelog
+all                  Run tests with coverage and linting
 coverage             Run tests with coverage
 deps                 Install dependencies
 lint                 Lint and static-check code
@@ -120,30 +119,20 @@ pull                 Pull code and schemas
 push                 Push commits and tags
 schemas              Update schemas
 test                 Run tests
-help                 Show help message
 ```
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome. For anything other than bugfixes, please first open an issue to discuss what you want to change.
 
-Make sure to add or update tests as appropriate.
+Be sure to add or update tests as appropriate.
 
-Use [Black](https://black.readthedocs.io/en/stable/) for code formatting and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) for commit messages.
+Use [Black](https://black.readthedocs.io/en/stable/) for code formatting.
 
-## [Changelog](CHANGELOG.md)
+## Release notes
+
+See [CHANGELOG.md](CHANGELOG.md)
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-<!-- Markdown link & img dfn's -->
-
-[pypi-image]: https://img.shields.io/pypi/v/iuliia
-[pypi-url]: https://pypi.org/project/iuliia/
-[build-image]: https://github.com/nalgeon/iuliia-py/actions/workflows/build.yml/badge.svg
-[build-url]: https://github.com/nalgeon/iuliia-py/actions/workflows/build.yml
-[coverage-image]: https://codecov.io/gh/nalgeon/iuliia-py/branch/master/graph/badge.svg?token=3WGP3C5RQA
-[coverage-url]: https://codecov.io/gh/nalgeon/iuliia-py
-[quality-image]: https://api.codeclimate.com/v1/badges/41548d40f34a3df8ec8a/maintainability
-[quality-url]: https://codeclimate.com/github/nalgeon/iuliia-py

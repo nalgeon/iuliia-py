@@ -5,9 +5,6 @@ all:  ## Run tests with coverage, lint and static-check code
 	make coverage
 	make lint
 
-changelog:  ## Generate changelog
-	conventional-changelog -p angular -i CHANGELOG.md -s
-
 coverage:  ## Run tests with coverage
 	python -m coverage erase
 	python -m coverage run --include=iuliia/* -m pytest -ra
