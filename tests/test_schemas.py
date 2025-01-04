@@ -1,9 +1,9 @@
 import pytest
-import iuliia
+from iuliia import Schemas
 
 
 def test_schema_names():
-    names = iuliia.Schemas.names()
+    names = Schemas.names()
     assert names == [
         "ala_lc",
         "ala_lc_alt",
@@ -37,23 +37,26 @@ def test_schema_names():
 
 
 def test_schema_items():
-    items = iuliia.Schemas.items()
+    items = Schemas.items()
     assert len(items) == 28
-    assert items[0] == ("ala_lc", iuliia.Schemas.get("ala_lc"))
+    assert items[0] == ("ala_lc", Schemas.get("ala_lc"))
 
 
-def test_get_schema_by_name():
-    schema = iuliia.Schemas.get("wikipedia")
+def test_get():
+    schema = Schemas.get("wikipedia")
     assert schema.name == "wikipedia"
+
+    with pytest.raises(ValueError) as exc:
+        Schemas.get("invalid")
+    assert str(exc.value) == "Schema 'invalid' does not exist"
 
 
 def _sample_reader():
-    for schema_item in iuliia.schemas.Schemas:
-        schema = schema_item.value
+    for _, schema in Schemas.items():
         for source, expected in schema.samples:
             yield schema, source, expected
 
 
 @pytest.mark.parametrize("schema,source,expected", _sample_reader())
 def test_samples(schema, source, expected):
-    assert iuliia.translate(source, schema) == expected
+    assert schema.translate(source) == expected

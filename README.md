@@ -8,7 +8,7 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 
 ```python
 >>> import iuliia
->>> iuliia.translate("Юлия Щеглова", schema=iuliia.WIKIPEDIA)
+>>> iuliia.WIKIPEDIA.translate("Юлия Щеглова")
 'Yuliya Shcheglova'
 ```
 
@@ -30,6 +30,22 @@ pip install iuliia
 ```
 
 ## Usage
+
+Transliterate using specified schema:
+
+```python
+>>> source = "Юлия Щеглова"
+>>> iuliia.ICAO_DOC_9303.translate(source)
+'Iuliia Shcheglova'
+```
+
+Or pick schema by name
+
+```python
+>>> schema = iuliia.Schemas.get("wikipedia")
+>>> schema.translate(source)
+'Yuliya Shcheglova'
+```
 
 List all supported schemas:
 
@@ -68,22 +84,6 @@ uz                  Uzbekistan cyr-lat transliteration schema
 wikipedia           Wikipedia transliteration schema
 yandex_maps         Yandex.Maps transliteration schema
 yandex_money        Yandex.Money transliteration schema
-```
-
-Transliterate using specified schema:
-
-```python
->>> source = "Юлия Щеглова"
->>> iuliia.translate(source, schema=iuliia.ICAO_DOC_9303)
-'Iuliia Shcheglova'
-```
-
-Or pick schema by name
-
-```python
->>> schema = iuliia.Schemas.get("wikipedia")
->>> iuliia.translate(source, schema)
-'Yuliya Shcheglova'
 ```
 
 Command line:

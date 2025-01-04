@@ -22,7 +22,7 @@ def main():
         sys.exit(1)
 
     source = sys.argv[2]
-    result = iuliia.translate(source, schema)
+    result = schema.translate(source)
     print(result)
 
 

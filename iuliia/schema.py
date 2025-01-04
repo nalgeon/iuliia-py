@@ -1,14 +1,28 @@
 """
-Transliteration schema base features.
+Transliteration schema.
 """
 
-from typing import Type
-from .mapping import LetterMapping, PrevMapping, NextMapping, EndingMapping
+from typing import Protocol
+from . import nlp
 
 
-class Schema:
+class Schema(Protocol):
     """
-    Transliteration schema. Defines the way to translate individual letters.
+    Transliteration schema. Translates Cyrillic text into Latin
+    using a given set of rules (mappings).
+    """
+
+    def translate(self, source: str) -> str:
+        """
+        Translate source Cyrillic string into Latin.
+        Translates the source string word by word.
+        """
+
+
+class TranslitSchema:
+    """
+    Transliteration schema. Translates Cyrillic text into Latin
+    using a given set of rules (mappings).
     """
 
     # pylint: disable=too-many-arguments
@@ -25,18 +39,76 @@ class Schema:
     ):
         self.name = name
         self.description = description
-        self.map = LetterMapping(mapping)
-        self.prev_map = PrevMapping(prev_mapping or {})
-        self.next_map = NextMapping(next_mapping or {})
-        self.ending_map = EndingMapping(ending_mapping or {})
         self.samples = samples or []
 
-    def translate_letter(self, prev: str, curr: str, next_: str) -> str:
-        """Translate ``curr`` letter according to schema mappings.
+        # Mapping for individual letters.
+        # - current letter is lowercase -> do not change case
+        self.map = dict(mapping.items())
+        # - current letter is uppercase -> uppercase
+        self.map |= {key.capitalize(): val.capitalize() for key, val in mapping.items()}
 
-        ``prev`` (the previous letter) and ``next_`` (the next one)
-        are taken into consideration according to corresponding mappings.
+        # Mapping for letters with respect to previous sibling.
+        prev_mapping = prev_mapping or {}
+        # - both letters are lowercase -> do not change case
+        self.prev_map = dict(prev_mapping.items())
+        # - previous is uppercase, current is lowercase -> do not change case
+        self.prev_map |= {key.capitalize(): val for key, val in prev_mapping.items()}
+        # - previous and current are uppercase -> capitalize
+        self.prev_map |= {key.upper(): val.capitalize() for key, val in prev_mapping.items()}
 
+        # Mapping for letters with respect to next sibling.
+        next_mapping = next_mapping or {}
+        # - both letters are lowercase -> do not change case
+        self.next_map = dict(next_mapping.items())
+        # - current is uppercase, next is lowercase -> capitalize
+        self.next_map |= {key.capitalize(): val.capitalize() for key, val in next_mapping.items()}
+        # - current and next are uppercase -> capitalize
+        self.next_map |= {key.upper(): val.capitalize() for key, val in next_mapping.items()}
+
+        # Mapping for word endings.
+        ending_mapping = ending_mapping or {}
+        # - ending is lowercase -> do not change case
+        self.ending_map = dict(ending_mapping.items())
+        # - ending is uppercase -> uppercase
+        self.ending_map |= {key.upper(): val.upper() for key, val in ending_mapping.items()}
+
+    def translate(self, source: str) -> str:
+        """
+        Translate source Cyrillic string into Latin.
+        Translates the source string word by word.
+        """
+        words = nlp.word_reader(source)
+        translated = (self._translate_word(word) for word in words)
+        return "".join(translated)
+
+    def _translate_word(self, word: str) -> str:
+        """Translate a single word."""
+        stem, ending = nlp.split_word(word)
+        translated_ending = self._translate_ending(ending)
+        if translated_ending:
+            # There is a specific translation for the ending,
+            # so we need to translate the stem and ending separately.
+            translated = self._translate_letters(stem)
+            translated.append(translated_ending)
+        else:
+            # There is no specific translation for the ending,
+            # so we can translate the whole word at once.
+            translated = self._translate_letters(word)
+        return "".join(translated)
+
+    def _translate_letters(self, word: str) -> list[str]:
+        """Translate letters of a single word."""
+        translated = []
+        for prev, curr, next_ in nlp.trigram_reader(word):
+            letter = self._translate_letter(prev, curr, next_)
+            translated.append(letter)
+        return translated
+
+    def _translate_letter(self, prev: str, curr: str, next_: str) -> str:
+        """Translate a single letter curr according to schema mapping.
+
+        prev (the previous letter) and next_ (the next one)
+        are considered according to their mappings.
         """
         letter = self.prev_map.get(prev + curr)
         if letter is None:
@@ -47,7 +119,7 @@ class Schema:
             letter = curr
         return letter
 
-    def translate_ending(self, ending: str) -> str | None:
+    def _translate_ending(self, ending: str) -> str | None:
         """Translate word ending according to schema mapping."""
         if not ending:
             return None
@@ -57,72 +129,4 @@ class Schema:
         return self.name
 
     def __repr__(self):
-        return self.name
-
-    @classmethod
-    def load(cls, definition: dict):
-        """Load schema from definition."""
-        defn = SchemaDefinition(definition)
-        defn.parse()
-        return Schema(
-            name=defn.name,
-            description=defn.description,
-            mapping=defn.mapping,
-            prev_mapping=defn.prev_mapping,
-            next_mapping=defn.next_mapping,
-            ending_mapping=defn.ending_mapping,
-            samples=defn.samples,
-        )
-
-
-# pylint: disable=too-many-instance-attributes
-class SchemaDefinition:
-    """Translitiration schema definition."""
-
-    def __init__(self, source: dict):
-        self.source = source
-        self.name: str = ""
-        self.description: str | None = None
-        self.mapping: dict[str, str] = {}
-        self.prev_mapping: dict[str, str] | None = None
-        self.next_mapping: dict[str, str] | None = None
-        self.ending_mapping: dict[str, str] | None = None
-        self.samples: list[list[str]] = []
-
-    def parse(self):
-        """Parse source definition, raising ValueError if necessary."""
-        self._parse_attr("name", type_=str, required=True, nonempty=True)
-        self._parse_attr("description", type_=str, required=False)
-        self._parse_attr("mapping", type_=dict, required=True)
-        self._parse_attr("prev_mapping", type_=dict, required=False)
-        self._parse_attr("next_mapping", type_=dict, required=False)
-        self._parse_attr("ending_mapping", type_=dict, required=False)
-        self._parse_samples()
-
-    def _parse_attr(self, name: str, type_: Type, required: bool, nonempty: bool = False):
-        value = self.source.get(name)
-        if required and value is None:
-            raise ValueError(f"{self.name}: Missing schema {name}")
-        if required and nonempty and not value:
-            raise ValueError(f"{self.name}: Schema {name} should not be empty")
-        if value is not None and not isinstance(value, type_):
-            raise ValueError(f"{self.name}: Invalid schema {name}: {value}")
-        setattr(self, name, value)
-
-    def _parse_samples(self):
-        samples = self.source.get("samples")
-        if samples is not None and not isinstance(samples, list):
-            raise ValueError(f"{self.name}: Invalid schema samples: {samples}")
-        if samples:
-            for sample in samples:
-                self._raise_on_invalid_sample(sample)
-        self.samples = samples
-
-    def _raise_on_invalid_sample(self, sample):
-        message = f"{self.name}: Invalid schema sample: {sample}"
-        if not isinstance(sample, list):
-            raise ValueError(message)
-        if len(sample) != 2:
-            raise ValueError(message)
-        if not isinstance(sample[0], str) or not isinstance(sample[1], str):
-            raise ValueError(message)
+        return f"{self.__class__.__name__}('{self.name}')"
