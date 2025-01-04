@@ -1,2 +1,2 @@
 [MESSAGES CONTROL]
-disable=bad-continuation,duplicate-code,too-few-public-methods
+disable=duplicate-code,too-few-public-methods

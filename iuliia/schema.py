@@ -1,6 +1,7 @@
 """
 Transliteration schema base features.
 """
+
 from typing import Dict, List
 from .mapping import LetterMapping, PrevMapping, NextMapping, EndingMapping
 
@@ -13,6 +14,7 @@ class Schema:
     # pylint: disable=too-many-arguments
     def __init__(
         self,
+        *,
         name: str,
         mapping: Dict[str, str],
         prev_mapping: Dict[str, str] = None,
