@@ -3,12 +3,13 @@ Translate engine.
 """
 
 import re
+from typing import Iterator
 from .schema import Schema
 
 SPLITTER = re.compile(r"\b")
 
 
-def translate(source: str, schema: Schema):
+def translate(source: str, schema: Schema) -> str:
     """
     Translate source Cyrillic string into Latin using specified schema.
     Translates sentences word by word, delegating specifics of transliteration
@@ -18,11 +19,11 @@ def translate(source: str, schema: Schema):
     return "".join(translated)
 
 
-def _split_sentence(source: str):
+def _split_sentence(source: str) -> Iterator[str]:
     return (word for word in SPLITTER.split(source) if word)
 
 
-def _translate_word(word: str, schema: Schema):
+def _translate_word(word: str, schema: Schema) -> str:
     stem, ending = _split_word(word)
     translated_ending = schema.translate_ending(ending) if ending else None
     if translated_ending:
@@ -33,7 +34,7 @@ def _translate_word(word: str, schema: Schema):
     return "".join(translated)
 
 
-def _translate_letters(word, schema):
+def _translate_letters(word: str, schema: Schema) -> list[str]:
     translated = []
     for prev, curr, next_ in _letter_reader(word):
         letter = schema.translate_letter(prev, curr, next_)
@@ -41,7 +42,7 @@ def _translate_letters(word, schema):
     return translated
 
 
-def _split_word(word):
+def _split_word(word: str) -> tuple[str, str]:
     ending_length = 2
     if len(word) > ending_length:
         stem = word[:-ending_length]
@@ -52,7 +53,7 @@ def _split_word(word):
     return stem, ending
 
 
-def _letter_reader(stem):
+def _letter_reader(stem: str) -> Iterator[tuple[str, str, str]]:
     idx = 0
     prev = ""
     curr = ""

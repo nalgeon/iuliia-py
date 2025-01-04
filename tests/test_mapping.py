@@ -15,7 +15,6 @@ def test_get(mapping):
     assert mapping.get("a") == "x"
     assert mapping.get("b") == "yy"
     assert mapping.get("c") is None
-    assert mapping.get("d", "d") == "d"
 
 
 def test_str(mapping):

@@ -7,7 +7,7 @@ module = "iuliia"
 author = "Anton Zhiyanov"
 author-email = "m@antonz.ru"
 home-page = "https://github.com/nalgeon/iuliia-py"
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 description-file = "README.md"
 classifiers = [
     "License :: OSI Approved :: MIT License",

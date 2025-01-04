@@ -2,7 +2,7 @@
 Transliteration schema base features.
 """
 
-from typing import Dict, List
+from typing import Type
 from .mapping import LetterMapping, PrevMapping, NextMapping, EndingMapping
 
 
@@ -16,12 +16,12 @@ class Schema:
         self,
         *,
         name: str,
-        mapping: Dict[str, str],
-        prev_mapping: Dict[str, str] = None,
-        next_mapping: Dict[str, str] = None,
-        ending_mapping: Dict[str, str] = None,
-        samples: List[List[str]] = None,
-        description: str = None,
+        mapping: dict[str, str],
+        prev_mapping: dict[str, str] | None = None,
+        next_mapping: dict[str, str] | None = None,
+        ending_mapping: dict[str, str] | None = None,
+        samples: list[list[str]] | None = None,
+        description: str | None = None,
     ):
         self.name = name
         self.description = description
@@ -42,10 +42,12 @@ class Schema:
         if letter is None:
             letter = self.next_map.get(curr + next_)
         if letter is None:
-            letter = self.map.get(curr, curr)
+            letter = self.map.get(curr)
+        if letter is None:
+            letter = curr
         return letter
 
-    def translate_ending(self, ending: str) -> str:
+    def translate_ending(self, ending: str) -> str | None:
         """Translate word ending according to schema mapping."""
         return self.ending_map.get(ending)
 
@@ -77,13 +79,13 @@ class SchemaDefinition:
 
     def __init__(self, source: dict):
         self.source = source
-        self.name = ""
-        self.description: None
-        self.mapping: Dict[str, str] = {}
-        self.prev_mapping = None
-        self.next_mapping = None
-        self.ending_mapping = None
-        self.samples: List[List[str]] = []
+        self.name: str = ""
+        self.description: str | None = None
+        self.mapping: dict[str, str] = {}
+        self.prev_mapping: dict[str, str] | None = None
+        self.next_mapping: dict[str, str] | None = None
+        self.ending_mapping: dict[str, str] | None = None
+        self.samples: list[list[str]] = []
 
     def parse(self):
         """Parse source definition, raising ValueError if necessary."""
@@ -95,7 +97,7 @@ class SchemaDefinition:
         self._parse_attr("ending_mapping", type_=dict, required=False)
         self._parse_samples()
 
-    def _parse_attr(self, name, type_, required, nonempty=False):
+    def _parse_attr(self, name: str, type_: Type, required: bool, nonempty: bool = False):
         value = self.source.get(name)
         if required and value is None:
             raise ValueError(f"{self.name}: Missing schema {name}")
