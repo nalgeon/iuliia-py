@@ -118,7 +118,8 @@ lint                 Lint and static-check code
 pull                 Pull code and schemas
 push                 Push commits and tags
 schemas              Update schemas
-test                 Run tests
+test                 Run functional tests
+timing               Run performance tests
 ```
 
 ## Contributing

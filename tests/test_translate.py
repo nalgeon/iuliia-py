@@ -1,6 +1,3 @@
-import os
-import timeit
-import pytest
 import iuliia
 from iuliia.schema import TranslitSchema
 
@@ -41,15 +38,3 @@ def test_short_word():
 def test_empty_word():
     schema = TranslitSchema(name="test", mapping={})
     assert schema.translate("") == ""
-
-
-@pytest.mark.skipif(
-    os.getenv("TEST_TIMING") is None, reason="skip timing test until explicitly requested"
-)
-def test_timing():
-    mapping = {chr(i): chr(i) for i in range(ord("a"), ord("z"))}
-    schema = TranslitSchema(name="test", mapping=mapping)
-    source = "The quick brown fox jumps over the lazy dog"
-    elapsed_sec = timeit.timeit(lambda: schema.translate(source), number=10000)
-    max_sec = 1.0
-    assert elapsed_sec < max_sec

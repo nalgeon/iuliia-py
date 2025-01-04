@@ -32,5 +32,8 @@ push:  ## Push commits and tags
 schemas:  ## Update schemas
 	cd iuliia/schemas && git submodule update --init --recursive && cd ../..
 
-test:  ## Run tests
+test:  ## Run functional tests
 	python -m pytest -ra
+
+timing:  ## Run performance tests
+	TEST_TIMING=1 python -m pytest -s tests/test_timing.py
