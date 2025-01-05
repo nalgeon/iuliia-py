@@ -3,13 +3,14 @@ Transliterate Cyrillic → Latin in every possible way
 """
 
 from .engine import translate
+from .repo import FileRepo
 from .schema import Schema
-from .schemas import Schemas
 
 __all__ = [
     "translate",
+    "FileRepo",
     "Schema",
-    "Schemas",
+    "schemas",
     "ALA_LC",
     "ALA_LC_ALT",
     "BGN_PCGN",
@@ -40,31 +41,33 @@ __all__ = [
     "YANDEX_MONEY",
 ]
 
-ALA_LC = Schemas.ala_lc.value
-ALA_LC_ALT = Schemas.ala_lc_alt.value
-BGN_PCGN = Schemas.bgn_pcgn.value
-BGN_PCGN_ALT = Schemas.bgn_pcgn_alt.value
-BS_2979 = Schemas.bs_2979.value
-BS_2979_ALT = Schemas.bs_2979_alt.value
-GOST_16876 = Schemas.gost_16876.value
-GOST_16876_ALT = Schemas.gost_16876_alt.value
-GOST_52290 = Schemas.gost_52290.value
-GOST_52535 = Schemas.gost_52535.value
-GOST_7034 = Schemas.gost_7034.value
-GOST_779 = Schemas.gost_779.value
-GOST_779_ALT = Schemas.gost_779_alt.value
-ICAO_DOC_9303 = Schemas.icao_doc_9303.value
-ISO_9_1954 = Schemas.iso_9_1954.value
-ISO_9_1968 = Schemas.iso_9_1968.value
-ISO_9_1968_ALT = Schemas.iso_9_1968_alt.value
-MOSMETRO = Schemas.mosmetro.value
-MVD_310 = Schemas.mvd_310.value
-MVD_310_FR = Schemas.mvd_310_fr.value
-MVD_782 = Schemas.mvd_782.value
-SCIENTIFIC = Schemas.scientific.value
-TELEGRAM = Schemas.telegram.value
-UNGEGN_1987 = Schemas.ungegn_1987.value
-UZ = Schemas.uz.value
-WIKIPEDIA = Schemas.wikipedia.value
-YANDEX_MAPS = Schemas.yandex_maps.value
-YANDEX_MONEY = Schemas.yandex_money.value
+schemas = FileRepo()
+
+ALA_LC: Schema = schemas.get("ala_lc")
+ALA_LC_ALT: Schema = schemas.get("ala_lc_alt")
+BGN_PCGN: Schema = schemas.get("bgn_pcgn")
+BGN_PCGN_ALT: Schema = schemas.get("bgn_pcgn_alt")
+BS_2979: Schema = schemas.get("bs_2979")
+BS_2979_ALT: Schema = schemas.get("bs_2979_alt")
+GOST_16876: Schema = schemas.get("gost_16876")
+GOST_16876_ALT: Schema = schemas.get("gost_16876_alt")
+GOST_52290: Schema = schemas.get("gost_52290")
+GOST_52535: Schema = schemas.get("gost_52535")
+GOST_7034: Schema = schemas.get("gost_7034")
+GOST_779: Schema = schemas.get("gost_779")
+GOST_779_ALT: Schema = schemas.get("gost_779_alt")
+ICAO_DOC_9303: Schema = schemas.get("icao_doc_9303")
+ISO_9_1954: Schema = schemas.get("iso_9_1954")
+ISO_9_1968: Schema = schemas.get("iso_9_1968")
+ISO_9_1968_ALT: Schema = schemas.get("iso_9_1968_alt")
+MOSMETRO: Schema = schemas.get("mosmetro")
+MVD_310: Schema = schemas.get("mvd_310")
+MVD_310_FR: Schema = schemas.get("mvd_310_fr")
+MVD_782: Schema = schemas.get("mvd_782")
+SCIENTIFIC: Schema = schemas.get("scientific")
+TELEGRAM: Schema = schemas.get("telegram")
+UNGEGN_1987: Schema = schemas.get("ungegn_1987")
+UZ: Schema = schemas.get("uz")
+WIKIPEDIA: Schema = schemas.get("wikipedia")
+YANDEX_MAPS: Schema = schemas.get("yandex_maps")
+YANDEX_MONEY: Schema = schemas.get("yandex_money")

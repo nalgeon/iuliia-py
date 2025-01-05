@@ -11,14 +11,14 @@ def main():
     if len(sys.argv) < 3:
         print("usage: iuliia SCHEMA SOURCE")
         print("Supported schemas:")
-        print("\n".join(iuliia.Schemas.names()))
+        print("\n".join(iuliia.schemas.names()))
         sys.exit(1)
 
     schema_name = sys.argv[1]
-    schema = iuliia.Schemas.get(schema_name)
+    schema = iuliia.schemas.get(schema_name)
     if schema is None:
         print(f"Schema '{schema_name}' does not exist. Supported schemas:")
-        print("\n".join(iuliia.Schemas.names()))
+        print("\n".join(iuliia.schemas.names()))
         sys.exit(1)
 
     source = sys.argv[2]

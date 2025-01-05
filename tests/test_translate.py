@@ -1,3 +1,4 @@
+import pytest
 import iuliia
 from iuliia.schema import TranslitSchema
 
@@ -5,9 +6,8 @@ from iuliia.schema import TranslitSchema
 def test_translate():
     schema = TranslitSchema(name="test", mapping={})
     assert schema.translate("Iuliia") == "Iuliia"
-
-    # deprecated
-    assert iuliia.translate("Iuliia", schema) == "Iuliia"
+    with pytest.deprecated_call():
+        assert iuliia.translate("Iuliia", schema) == "Iuliia"
 
 
 def test_mapping():

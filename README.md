@@ -42,16 +42,17 @@ Transliterate using specified schema:
 Or pick schema by name
 
 ```python
->>> schema = iuliia.Schemas.get("wikipedia")
->>> schema.translate(source)
+>>> iuliia.schemas.has("wikipedia")
+True
+>>> schema = iuliia.schemas.get("wikipedia")
+>>> schema.translate("Юлия Щеглова")
 'Yuliya Shcheglova'
 ```
 
 List all supported schemas:
 
 ```python
-import iuliia
-for name, schema in iuliia.Schemas.items():
+for name, schema in iuliia.schemas.items():
     print("{0:<20}{1}".format(name, schema.description))
 ```
 

@@ -12,6 +12,18 @@ class Schema(Protocol):
     using a given set of rules (mappings).
     """
 
+    @property
+    def name(self) -> str | None:
+        """Schema name."""
+
+    @property
+    def description(self) -> str | None:
+        """Schema description."""
+
+    @property
+    def samples(self) -> list[list[str]]:
+        """Schema samples."""
+
     def translate(self, source: str) -> str:
         """
         Translate source Cyrillic string into Latin.
