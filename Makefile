@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := all
-.PHONY: all changelog coverage deps lint publish pull push schemas test
+.PHONY: all coverage deps lint publish pull push schemas test timing
 
 all:  ## Run tests with coverage, lint and static-check code
 	make coverage

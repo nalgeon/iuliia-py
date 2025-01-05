@@ -130,10 +130,6 @@ Be sure to add or update tests as appropriate.
 
 Use [Black](https://black.readthedocs.io/en/stable/) for code formatting.
 
-## Release notes
-
-See [CHANGELOG.md](CHANGELOG.md)
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
