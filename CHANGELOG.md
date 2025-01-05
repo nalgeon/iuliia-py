@@ -1,3 +1,5 @@
+For release notes on version 0.13 and later, [see GitHub](https://github.com/nalgeon/iuliia-py/releases).
+
 ## 0.12.0 (2024-01-04)
 
 Added Uzbek transliteration schema (`uz`).
