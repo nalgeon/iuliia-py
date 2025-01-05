@@ -132,4 +132,4 @@ Use [Black](https://black.readthedocs.io/en/stable/) for code formatting.
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Created by [Anton Zhiyanov](https://antonz.org/). Released under the MIT License.
