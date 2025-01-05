@@ -14,14 +14,13 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 
 ## Why use `Iuliia`
 
--   20 Russian transliteration schemas, including all major international and national standards.
+-   20 Russian transliteration schemas (all major international and national standards).
 -   Official Uzbek transliteration schema.
--   Implements the base mapping and all special rules for letter combinations and word endings.
 -   Simple API and zero third-party dependencies.
 
 For schema details and other information, see [iuliia.ru](https://iuliia.ru/) (in Russian).
 
-[Issues and limitations](https://github.com/nalgeon/iuliia/blob/master/README.md#issues-and-limitations)
+[Limitations](https://github.com/nalgeon/iuliia/blob/master/README.md#issues-and-limitations)
 
 ## Installation
 
