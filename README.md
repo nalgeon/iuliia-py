@@ -122,14 +122,6 @@ test                 Run functional tests
 timing               Run performance tests
 ```
 
-## Contributing
-
-Contributions are welcome. For anything other than bugfixes, please first open an issue to discuss what you want to change.
-
-Be sure to add or update tests as appropriate.
-
-Use [Black](https://black.readthedocs.io/en/stable/) for code formatting.
-
 ## License
 
 Created by [Anton Zhiyanov](https://antonz.org/). Released under the MIT License.
